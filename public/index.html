@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Riesgo de Incendios Forestales</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Monitor de Riesgo de Incendios Forestales</h1>
+            <p class="actualizacion">Última actualización: <span id="fecha-actualizacion">Cargando...</span> <span id="hora-actualizacion"></span></p>
+        </header>
+        
+        <main>
+            <div class="medidor-container">
+                <h2>Riesgo de Incendios</h2>
+                <div class="velocimetro">
+                    <div class="arco-base">
+                        <div class="seccion" data-nivel="bajo"></div>
+                        <div class="seccion" data-nivel="moderado"></div>
+                        <div class="seccion" data-nivel="alto"></div>
+                        <div class="seccion" data-nivel="muy-alto"></div>
+                        <div class="seccion" data-nivel="extremo"></div>
+                    </div>
+                    <div class="aguja-container">
+                        <div class="aguja"></div>
+                        <div class="pivote"></div>
+                    </div>
+                    <div class="etiquetas">
+                        <span class="etiqueta-bajo">BAJO</span>
+                        <span class="etiqueta-moderado">MODERADO</span>
+                        <span class="etiqueta-alto">ALTO</span>
+                        <span class="etiqueta-muy-alto">MUY ALTO</span>
+                        <span class="etiqueta-extremo">EXTREMO</span>
+                    </div>
+                </div>
+                <div class="nivel-actual">
+                    <h3>Nivel de Riesgo:</h3>
+                    <div class="etiqueta-nivel" id="nivel-riesgo">Cargando...</div>
+                </div>
+            </div>
+
+            <div class="condiciones-actuales">
+                <h2>Condiciones Meteorológicas Actuales</h2>
+                <div class="parametros">
+                    <div class="parametro">
+                        <i class="fas fa-thermometer-three-quarters"></i>
+                        <h3>Temperatura</h3>
+                        <div class="valor" id="temperatura-actual">Cargando...</div>
+                        <div class="regla-30" id="regla-temp"></div>
+                        <div class="factor-riesgo" id="factor-temp">
+                            <div class="factor-icon"><i class="fas fa-check"></i></div>
+                            <div class="factor-text">Factor de Riesgo: T > 30°C</div>
+                        </div>
+                    </div>
+                    <div class="parametro">
+                        <i class="fas fa-tint"></i>
+                        <h3>Humedad</h3>
+                        <div class="valor" id="humedad-actual">Cargando...</div>
+                        <div class="regla-30" id="regla-humedad"></div>
+                        <div class="factor-riesgo" id="factor-humedad">
+                            <div class="factor-icon"><i class="fas fa-check"></i></div>
+                            <div class="factor-text">Factor de Riesgo: H < 30%</div>
+                        </div>
+                    </div>
+                    <div class="parametro">
+                        <i class="fas fa-wind"></i>
+                        <h3>Viento</h3>
+                        <div class="valor" id="viento-actual">Cargando...</div>
+                        <div class="direccion-viento" id="direccion-viento">Dirección: Cargando...</div>
+                        <div class="regla-30" id="regla-viento"></div>
+                        <div class="factor-riesgo" id="factor-viento">
+                            <div class="factor-icon"><i class="fas fa-check"></i></div>
+                            <div class="factor-text">Factor de Riesgo: V > 30km/h</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acciones">
+                <button id="actualizar-btn" class="btn"><i class="fas fa-sync-alt"></i> Actualizar Datos</button>
+                <button id="captura-btn" class="btn"><i class="fas fa-camera"></i> Capturar Velocímetro</button>
+            </div>
+            
+            <div class="regla-30-info">
+                <h3>Regla de los 30</h3>
+                <p>La "regla de los 30" indica un riesgo extremo de incendios cuando se dan estas tres condiciones simultáneamente:</p>
+                <ul>
+                    <li>Temperatura <strong>>30°C</strong></li>
+                    <li>Humedad <strong><30%</strong></li>
+                    <li>Viento <strong>>30 km/h</strong></li>
+                </ul>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Datos obtenidos de la Estación Meteorológica de Brandsen en tiempo real.</p>
+            <p>&copy; 2025 - Monitor de Riesgo de Incendios</p>
+        </footer>
+    </div>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        
+        // Ejecutar el script de scraping y actualizar los datos
+        function ejecutarScraping() {
+            mostrarCargando(true);
+            
+            // En una aplicación real, aquí llamaríamos al script index.js para hacer scraping
+            // Como estamos en un entorno de navegador, simularemos que se ejecutó el scraping
+            // y volveremos a cargar el archivo JSON (que en un entorno real cambiaría)
+            
+            setTimeout(() => {
+                cargarDatosScraping();
+            }, 1500);
+        }
+        
+        // Función para usar datos de ejemplo si hay algún error
+        function usarDatosEjemplo() {
+            const datosEjemplo = {
+                "fecha": "16/05/2025",
+                "hora": "10:30AM",
+                "temperatura": {
+                    "actual": "28.5°C",
+                    "valorActual": 28.5,
+                        <script src="js/script.js"></script>
+</body>
+</html>
+                
+                if (tempValue >= 30) factoresRiesgo++;
+                if (humValue <= 30) factoresRiesgo++;
+                if (vientoValue >= 30) factoresRiesgo++;
+                
+                switch (factoresRiesgo) {
+                    case 0:
+                        nivelRiesgo = "Bajo";
+                        break;
+                    case 1:
+                        nivelRiesgo = "Moderado";
+                        break;
+                    case 2:
+                        nivelRiesgo = "Alto";
+                        break;
+                    case 3:
+                        nivelRiesgo = "Extremo";
+                        break;
+                    default:
+                        nivelRiesgo = "Bajo";
+                }
+                
+                // Si la temperatura es muy alta o la humedad muy baja, aumentar el riesgo
+                if (tempValue >= 35 && humValue <= 20) {
+                    nivelRiesgo = "Extremo";
+                } else if (tempValue >= 33 && humValue <= 25) {
+                    if (nivelRiesgo !== "Extremo") nivelRiesgo = "Muy Alto";
+                }
+                
+                datos.nivelRiesgo = nivelRiesgo;
+            } catch (error) {
+                console.error("Error al procesar datos numéricos:", error);
+            }
+        }
+        
+        // Función para mostrar/ocultar indicador de carga
+        function mostrarCargando(show) {
+            const btnActualizar = document.getElementById('actualizar-btn');
+            
+            if (show) {
+                btnActualizar.disabled = true;
+                btnActualizar.innerHTML = '<i class="fas fa-sync fa-spin"></i> Actualizando...';
+            } else {
+                btnActualizar.disabled = false;
+                btnActualizar.innerHTML = '<i class="fas fa-sync-alt"></i> Actualizar Datos';
+            }
+        }
+        
+        // Función para actualizar toda la interfaz con los nuevos datos
+        function actualizarInterfaz(datos) {
+            // Actualizar fecha y hora
+            document.getElementById('fecha-actualizacion').textContent = datos.fecha || 'No disponible';
+            document.getElementById('hora-actualizacion').textContent = datos.hora || '';
+            
+            // Actualizar nivel de riesgo y velocímetro
+            actualizarNivelRiesgo(datos.nivelRiesgo || 'Bajo');
+            
+            // Actualizar valores de temperatura, humedad y viento
+            actualizarParametro('temperatura', datos.temperatura.actual, datos.temperatura.valorActual >= 30);
+            actualizarParametro('humedad', datos.humedad.actual, datos.humedad.valorActual <= 30);
+            actualizarParametro('viento', datos.viento.velocidad, datos.viento.valorActual >= 30);
+            
+            // Actualizar dirección del viento si está disponible
+            if (datos.viento && datos.viento.direccion) {
+                document.getElementById('direccion-viento').textContent = `Dirección: ${datos.viento.direccion}`;
+            }
+        }
+        
+        // Función para actualizar cada parámetro meteorológico
+        function actualizarParametro(tipo, valor, cumpleRegla30) {
+            const elementoValor = document.getElementById(`${tipo}-actual`);
+            const elementoRegla = document.getElementById(`regla-${tipo}`);
+            
+            if (elementoValor) {
+                elementoValor.textContent = valor || 'No disponible';
+            }
+            
+            if (elementoRegla) {
+                elementoRegla.classList.remove('activo', 'alerta', 'normal');
+                
+                let mensaje = '';
+                if (cumpleRegla30 !== undefined) {
+                    elementoRegla.classList.add('activo');
+                    
+                    if (cumpleRegla30) {
+                        elementoRegla.classList.add('alerta');
+                        
+                        switch (tipo) {
+                            case 'temperatura':
+                                mensaje = 'Superior a 30°C (Factor de riesgo)';
+                                break;
+                            case 'humedad':
+                                mensaje = 'Inferior a 30% (Factor de riesgo)';
+                                break;
+                            case 'viento':
+                                mensaje = 'Superior a 30 km/h (Factor de riesgo)';
+                                break;
+                        }
+                    } else {
+                        elementoRegla.classList.add('normal');
+                        
+                        switch (tipo) {
+                            case 'temperatura':
+                                mensaje = 'Inferior a 30°C (Normal)';
+                                break;
+                            case 'humedad':
+                                mensaje = 'Superior a 30% (Normal)';
+                                break;
+                            case 'viento':
+                                mensaje = 'Inferior a 30 km/h (Normal)';
+                                break;
+                        }
+                    }
+                    
+                    elementoRegla.textContent = mensaje;
+                }
+            }
+        }
+        
+        // Función para actualizar el nivel de riesgo y mover la aguja del velocímetro
+        function actualizarNivelRiesgo(nivel) {
+            nivel = nivel.toLowerCase();
+            const elementoNivel = document.getElementById('nivel-riesgo');
+            const aguja = document.querySelector('.aguja');
+            
+            if (elementoNivel) {
+                elementoNivel.textContent = nivel.charAt(0).toUpperCase() + nivel.slice(1);
+                elementoNivel.className = 'etiqueta-nivel ' + nivel;
+            }
+            
+            // Calcular el ángulo de la aguja según el nivel de riesgo
+            let angulo = 0;
+            
+            switch (nivel) {
+                case 'bajo':
+                    angulo = -80;
+                    break;
+                case 'moderado':
+                    angulo = -40;
+                    break;
+                case 'alto':
+                    angulo = 0;
+                    break;
+                case 'muy alto':
+                case 'muy-alto':
+                    angulo = 40;
+                    break;
+                case 'extremo':
+                    angulo = 80;
+                    break;
+                default:
+                    angulo = -80; // Por defecto, nivel bajo
+            }
+            
+            if (aguja) {
+                aguja.style.transform = `rotate(${angulo}deg)`;
+            }
+        }
+        
+        // Función para capturar el velocímetro y descargar como imagen
+        async function capturarVelocimetro() {
+            const velocimetroSection = document.querySelector('.medidor-container');
+            const fechaHora = new Date().toLocaleString('es-AR');
+            
+            try {
+                // Mostrar mensaje de captura
+                const capturaMsg = document.createElement('div');
+                capturaMsg.textContent = 'Generando captura...';
+                capturaMsg.style.position = 'fixed';
+                capturaMsg.style.top = '10px';
+                capturaMsg.style.left = '50%';
+                capturaMsg.style.transform = 'translateX(-50%)';
+                capturaMsg.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                capturaMsg.style.color = 'white';
+                capturaMsg.style.padding = '10px 20px';
+                capturaMsg.style.borderRadius = '5px';
+                capturaMsg.style.zIndex = '9999';
+                document.body.appendChild(capturaMsg);
+                
+                // Añadir marca temporal al velocímetro para la captura
+                const timestampDiv = document.createElement('div');
+                timestampDiv.className = 'captura-timestamp';
+                timestampDiv.innerHTML = `<p><strong>Fecha y hora:</strong> ${fechaHora}</p>
+                                          <p><strong>Datos de Brandsen</strong></p>`;
+                timestampDiv.style.backgroundColor = 'white';
+                timestampDiv.style.padding = '10px';
+                timestampDiv.style.marginTop = '10px';
+                timestampDiv.style.textAlign = 'center';
+                timestampDiv.style.borderRadius = '5px';
+                timestampDiv.style.border = '1px solid #ddd';
+                velocimetroSection.appendChild(timestampDiv);
+                
+                // Realizar la captura
+                const canvas = await html2canvas(velocimetroSection, {
+                    backgroundColor: null,
+                    scale: 2, // Mayor calidad
+                    logging: false
+                });
+                
+                // Convertir a imagen
+                const imagen = canvas.toDataURL('image/png');
+                
+                // Crear un enlace para descargar la imagen
+                const enlace = document.createElement('a');
+                enlace.href = imagen;
+                enlace.download = `riesgo-incendios-${new Date().toISOString().slice(0, 10)}.png`;
+                document.body.appendChild(enlace);
+                enlace.click();
+                document.body.removeChild(enlace);
+                
+                // Eliminar el timestamp después de la captura
+                velocimetroSection.removeChild(timestampDiv);
+                
+                // Eliminar mensaje de captura
+                setTimeout(() => {
+                    document.body.removeChild(capturaMsg);
+                }, 1000);
+                
+            } catch (error) {
+                console.error('Error al capturar velocímetro:', error);
+                alert('No se pudo generar la captura.');
+            }
+        }
+    </script>
+</body>
+</html>

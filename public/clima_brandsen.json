@@ -1,0 +1,68 @@
+{
+  "fecha": "16/05/25",
+  "hora": "6:34a",
+  "temperatura": {
+    "actual": "20.9\n            �C",
+    "diaria": {
+      "minima": "20.6\n            �C",
+      "maxima": "21.7\n            �C"
+    },
+    "horas": {
+      "minima": "2:25a",
+      "maxima": "4:16a"
+    },
+    "mensual": {
+      "minima": "7.6\n            �C",
+      "maxima": "27.7\n            �C"
+    },
+    "anual": {
+      "minima": "3.8\n            �C",
+      "maxima": "39.2\n            �C"
+    }
+  },
+  "humedad": {
+    "actual": "88\n            %",
+    "diaria": {
+      "minima": "81\n            %",
+      "maxima": "90\n            %"
+    },
+    "horas": {
+      "minima": "3:20a",
+      "maxima": "12:00a"
+    },
+    "mensual": {
+      "minima": "41\n            %",
+      "maxima": "97\n            %"
+    },
+    "anual": {
+      "minima": "18\n            %",
+      "maxima": "97\n            %"
+    }
+  },
+  "puntoRocio": {
+    "actual": "18.8\n            �C"
+  },
+  "sensacionTermica": {
+    "viento": "20.9\n            �C",
+    "humedad": "22.0\n            �C"
+  },
+  "presionBarometrica": {
+    "actual": "1009.8\n              hPa"
+  },
+  "viento": {
+    "velocidad": "6.4\n              km/hr",
+    "direccion": "W (\n              265)",
+    "maximas": {
+      "diaria": "35.4\n              km/hr",
+      "hora": "1:20a",
+      "mensual": "35.4\n              km/hr",
+      "anual": "49.9\n              km/hr"
+    }
+  },
+  "lluvia": {
+    "diaria": "3.8\n              mm",
+    "intensidad": "0.0\n              mm/hr",
+    "mensual": "83.8\n              mm",
+    "anual": "647.4\n              mm"
+  }
+}
